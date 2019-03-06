@@ -30,48 +30,48 @@
 
 using namespace std;
 
-int main(){
-    int n, m, c;
-    set<int> res;
-    cin>>n>>m>>c;
-    vector<vector<bool>> chain;
-    for(int i=0; i<n; i++){
-        chain.emplace_back(c);
-        int c_num, tmp; cin>>c_num;
-        for(int j=0; j<c_num; j++){
-            cin>>tmp;
-            chain[i][tmp-1] = true;
-        }
-    }
-    vector<int> color_num(c);
-    for(int i=0; i<m; i++){
-        for(int j=0; j<c; j++){
-            color_num[j] += chain[i][j];
-            if(color_num[j]>1){
-                res.insert(j);
-            }
-        }
-    }
-//    for(auto vec : chain){
-//        for(auto val : vec){
-//            cout<<val<<" ";
+//int main(){
+//    int n, m, c;
+//    set<int> res;
+//    cin>>n>>m>>c;
+//    vector<vector<bool>> chain;
+//    for(int i=0; i<n; i++){
+//        chain.emplace_back(c);
+//        int c_num, tmp; cin>>c_num;
+//        for(int j=0; j<c_num; j++){
+//            cin>>tmp;
+//            chain[i][tmp-1] = true;
 //        }
-//        cout<<endl;
 //    }
-//    cout<<endl;
-    if(n > 2){
-        for(int i = 1; i < n; i++){
-            int ind = (i + m - 1) % n;
-            for(int j = 0; j < c; j++){
-                color_num[j] -= chain[i-1][j];
-                color_num[j] += chain[ind][j];
-                if(color_num[j] > 1){
-                    res.insert(j);
-                }
-            }
-        }
-    }
-    cout<<res.size()<<endl;
-
-    return 0;
-}
+//    vector<int> color_num(c);
+//    for(int i=0; i<m; i++){
+//        for(int j=0; j<c; j++){
+//            color_num[j] += chain[i][j];
+//            if(color_num[j]>1){
+//                res.insert(j);
+//            }
+//        }
+//    }
+////    for(auto vec : chain){
+////        for(auto val : vec){
+////            cout<<val<<" ";
+////        }
+////        cout<<endl;
+////    }
+////    cout<<endl;
+//    if(n > 2){
+//        for(int i = 1; i < n; i++){
+//            int ind = (i + m - 1) % n;
+//            for(int j = 0; j < c; j++){
+//                color_num[j] -= chain[i-1][j];
+//                color_num[j] += chain[ind][j];
+//                if(color_num[j] > 1){
+//                    res.insert(j);
+//                }
+//            }
+//        }
+//    }
+//    cout<<res.size()<<endl;
+//
+//    return 0;
+//}

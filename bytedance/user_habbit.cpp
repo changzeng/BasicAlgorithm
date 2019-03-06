@@ -34,21 +34,21 @@
 
 using namespace std;
 
-int main(){
-    unordered_map<int, vector<int>> score_to_user_set;
-    int user_num, score; cin>>user_num;
-    for(int i=1; i<=user_num; i++){
-        cin>>score;
-        score_to_user_set[score].push_back(i);
-    }
-    int n; cin>>n;
-    vector<int> l(n), r(n), k(n);
-    for(int i=0; i<n; i++)
-        cin>>l[i]>>r[i]>>k[i];
-    for(int i=0; i<n; i++){
-        auto tmp_vec = score_to_user_set[k[i]];
-        auto low = lower_bound(tmp_vec.begin(), tmp_vec.end(), l[i]);
-        auto up = upper_bound(tmp_vec.begin(), tmp_vec.end(), r[i]);
-        cout<<up-low<<endl;
-    }
-}
+//int main(){
+//    unordered_map<int, vector<int>> score_to_user_set;
+//    int user_num, score; cin>>user_num;
+//    for(int i=1; i<=user_num; i++){
+//        cin>>score;
+//        score_to_user_set[score].push_back(i);
+//    }
+//    int n; cin>>n;
+//    vector<int> l(n), r(n), k(n);
+//    for(int i=0; i<n; i++)
+//        cin>>l[i]>>r[i]>>k[i];
+//    for(int i=0; i<n; i++){
+//        auto tmp_vec = score_to_user_set[k[i]];
+//        auto low = lower_bound(tmp_vec.begin(), tmp_vec.end(), l[i]);
+//        auto up = upper_bound(tmp_vec.begin(), tmp_vec.end(), r[i]);
+//        cout<<up-low<<endl;
+//    }
+//}

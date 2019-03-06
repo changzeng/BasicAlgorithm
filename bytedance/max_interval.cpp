@@ -62,12 +62,12 @@ int max_interval_2(const vector<int> &_input){
     return res;
 }
 
-int main(){
-    int num;cin>>num;
-    vector<int> _input; _input.resize(num);
-    for(int i=0; i<num; i++){
-        cin>>_input[i];
-    }
-    cout<<max_interval_2(_input)<<endl;
-    return 0;
-}
+//int main(){
+//    int num;cin>>num;
+//    vector<int> _input; _input.resize(num);
+//    for(int i=0; i<num; i++){
+//        cin>>_input[i];
+//    }
+//    cout<<max_interval_2(_input)<<endl;
+//    return 0;
+//}

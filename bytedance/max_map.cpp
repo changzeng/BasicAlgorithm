@@ -69,16 +69,16 @@ LL max_map(const vector<string> &_input){
     return res;
 }
 
-int main(){
-    LL a;
-    string tmp;
-    vector<string> _input;
-    int _input_size;cin>>_input_size;
-    for(int i=0; i<_input_size; i++){
-        cin>>tmp;
-        _input.push_back(tmp);
-    }
-    cout<<max_map(_input)<<endl;
-
-    return 0;
-}
+//int main(){
+//    LL a;
+//    string tmp;
+//    vector<string> _input;
+//    int _input_size;cin>>_input_size;
+//    for(int i=0; i<_input_size; i++){
+//        cin>>tmp;
+//        _input.push_back(tmp);
+//    }
+//    cout<<max_map(_input)<<endl;
+//
+//    return 0;
+//}

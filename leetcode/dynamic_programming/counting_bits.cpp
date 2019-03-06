@@ -40,14 +40,14 @@ public:
     }
 };
 
-int main(){
-    Solution s;
-    vector<int> res = s.countBits(16);
-
-    for(auto val : res){
-        cout<<val<<" ";
-    }
-    cout<<endl;
-
-    return 0;
-}
+//int main(){
+//    Solution s;
+//    vector<int> res = s.countBits(16);
+//
+//    for(auto val : res){
+//        cout<<val<<" ";
+//    }
+//    cout<<endl;
+//
+//    return 0;
+//}

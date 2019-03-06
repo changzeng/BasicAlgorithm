@@ -50,14 +50,14 @@ void dp(vector<int> &nums, int depth, int &value){
     }
 }
 
-int main(){
-    vector<int> nums(24);
-    for(int i=0; i<24; i++)
-        cin>>nums[i];
-
-    int max_b_value = b_value(nums);
-    dp(nums, 1, max_b_value);
-    cout<<max_b_value<<endl;
-
-    return 0;
-}
+//int main(){
+//    vector<int> nums(24);
+//    for(int i=0; i<24; i++)
+//        cin>>nums[i];
+//
+//    int max_b_value = b_value(nums);
+//    dp(nums, 1, max_b_value);
+//    cout<<max_b_value<<endl;
+//
+//    return 0;
+//}

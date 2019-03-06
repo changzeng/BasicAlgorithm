@@ -88,71 +88,71 @@ struct rd_cmp{
     }
 };
 
-int main(){
-    priority_queue<PAIR, vector<PAIR>, rd_cmp> rd_queue;
-    unordered_map<int, pm_queue> all_pm_req;
-    unordered_map<int, int> req_finish_time;
-
-    int pm_num, rd_num, req_num;
-    cin>>pm_num>>rd_num>>req_num;
-    vector<Req> all_req;
-    int ind, _time, p, c;
-    for(int i=0; i<req_num; i++){
-        cin>>ind>>_time>>p>>c;
-        all_req.emplace_back(i, ind, _time, p, c);
-    }
-    sort(all_req.begin(), all_req.end(), [](Req &a, Req &b){return a._time<b._time;});
-
-    for(int i=0; i<rd_num; i++){
-        rd_queue.emplace(i, 1);
-    }
-
-    int left_ind=0;
-    while(left_ind < all_req.size()){
-        int cur_time=all_req[left_ind]._time;
-        while(left_ind<all_req.size() && all_req[left_ind]._time == cur_time){
-            // cout<<cur_time<<endl;
-            Req tmp_req = all_req[left_ind];
-            all_pm_req[tmp_req.ind].push(tmp_req);
-            left_ind++;
-        }
-        if(left_ind >= all_req.size())
-            cur_time = INT32_MAX;
-        while(rd_queue.top().second <= cur_time){
-            Req most_req;
-            for(int i=1; i<=pm_num; i++){
-                if(all_pm_req[i].empty())
-                    continue;
-                if(most_req.id == -1 or rd_select_func(all_pm_req[i].top(), most_req)){
-                    most_req = all_pm_req[i].top();
-                }
-            }
-            if(most_req.id == -1)
-                break;
-            // Req item = most_req;
-            // cout << item.id << " " << item.ind << " " << item._time << " " << item.p << " " << item.c << endl;
-            all_pm_req[most_req.ind].pop();
-            PAIR exc_rd = rd_queue.top(); rd_queue.pop();
-            exc_rd.second = max(exc_rd.second, most_req._time) + most_req.c;
-            // cout<<exc_rd.second<<" "<<most_req._time<<" "<<most_req.id<<" "<<exc_rd.second<<endl;
-            req_finish_time[most_req.id] = exc_rd.second;
-            rd_queue.push(exc_rd);
-        }
-    }
-
-    // cout<<endl;
-    for(int i=0; i<req_num; i++){
-        cout<<req_finish_time[i]<<endl;
-    }
-
-//    for(int i=1; i<=pm_num; i++){
-//        while(!all_pm_req[i].empty()){
-//            auto item = all_pm_req[i].top();
-//            all_pm_req[i].pop();
-//            cout << item.id << " " << item.ind << " " << item._time << " " << item.p << " " << item.c << endl;
-//        }
-//        cout << endl;
+//int main(){
+//    priority_queue<PAIR, vector<PAIR>, rd_cmp> rd_queue;
+//    unordered_map<int, pm_queue> all_pm_req;
+//    unordered_map<int, int> req_finish_time;
+//
+//    int pm_num, rd_num, req_num;
+//    cin>>pm_num>>rd_num>>req_num;
+//    vector<Req> all_req;
+//    int ind, _time, p, c;
+//    for(int i=0; i<req_num; i++){
+//        cin>>ind>>_time>>p>>c;
+//        all_req.emplace_back(i, ind, _time, p, c);
 //    }
-
-    return 0;
-}
+//    sort(all_req.begin(), all_req.end(), [](Req &a, Req &b){return a._time<b._time;});
+//
+//    for(int i=0; i<rd_num; i++){
+//        rd_queue.emplace(i, 1);
+//    }
+//
+//    int left_ind=0;
+//    while(left_ind < all_req.size()){
+//        int cur_time=all_req[left_ind]._time;
+//        while(left_ind<all_req.size() && all_req[left_ind]._time == cur_time){
+//            // cout<<cur_time<<endl;
+//            Req tmp_req = all_req[left_ind];
+//            all_pm_req[tmp_req.ind].push(tmp_req);
+//            left_ind++;
+//        }
+//        if(left_ind >= all_req.size())
+//            cur_time = INT32_MAX;
+//        while(rd_queue.top().second <= cur_time){
+//            Req most_req;
+//            for(int i=1; i<=pm_num; i++){
+//                if(all_pm_req[i].empty())
+//                    continue;
+//                if(most_req.id == -1 or rd_select_func(all_pm_req[i].top(), most_req)){
+//                    most_req = all_pm_req[i].top();
+//                }
+//            }
+//            if(most_req.id == -1)
+//                break;
+//            // Req item = most_req;
+//            // cout << item.id << " " << item.ind << " " << item._time << " " << item.p << " " << item.c << endl;
+//            all_pm_req[most_req.ind].pop();
+//            PAIR exc_rd = rd_queue.top(); rd_queue.pop();
+//            exc_rd.second = max(exc_rd.second, most_req._time) + most_req.c;
+//            // cout<<exc_rd.second<<" "<<most_req._time<<" "<<most_req.id<<" "<<exc_rd.second<<endl;
+//            req_finish_time[most_req.id] = exc_rd.second;
+//            rd_queue.push(exc_rd);
+//        }
+//    }
+//
+//    // cout<<endl;
+//    for(int i=0; i<req_num; i++){
+//        cout<<req_finish_time[i]<<endl;
+//    }
+//
+////    for(int i=1; i<=pm_num; i++){
+////        while(!all_pm_req[i].empty()){
+////            auto item = all_pm_req[i].top();
+////            all_pm_req[i].pop();
+////            cout << item.id << " " << item.ind << " " << item._time << " " << item.p << " " << item.c << endl;
+////        }
+////        cout << endl;
+////    }
+//
+//    return 0;
+//}
