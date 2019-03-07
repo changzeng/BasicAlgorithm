@@ -5,49 +5,74 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <limits>
 
 using namespace std;
 
 typedef vector<vector<int>> matrix;
 
-int dijkstra(matrix &map){
-    int res=0;
-    vector<int> dis(map.size(), -1);
-    vector<bool> visit(map.size(), false);
-    return 0;
-}
-
 struct Triple{
     vector<int> d;
-    Triple(int a[3]) {
-        d.resize(3);
-        for (int i = 0; i < 3; i++)
-            d[i] = a[i];
+    explicit Triple(int a, int b, int c) {
+        this->d.resize(3);
+        d[0]=a; d[1]=b; d[2]=c;
     }
-    bool operator()(const Triple &a, const Triple &b){
-        return a.d[1] > b.d[1];
+    int get(int i){
+        return this->d[i];
     }
 };
 
+struct cmp{
+    bool operator()(Triple &a, Triple &b){
+        return a.get(1) > b.get(1);
+    }
+};
 
-//int main(){
-//    matrix map;
-//    map.emplace_back({0, 5, 10, 0, 0, 0});
-//    map.emplace_back({5, 0, 4, 0, 30, 20});
-//    map.emplace_back({10, 4, 0, 5, 0, 0});
-//    map.emplace_back({0, 0, 5, 0, 0, 7});
-//    map.emplace_back({0, 30, 0, 0, 0, 1});
-//    map.emplace_back({0, 20, 0, 7, 1, 0});
+int dijkstra(matrix &map){
+    int res=0;
+    vector<int> dis(map.size(), INT32_MAX);
+    vector<int> version(map.size(), 0);
+    vector<bool> visit(map.size(), false);
+    priority_queue<Triple, vector<Triple>, cmp> queue;
+    visit[0] = true;
+    dis[0]=0;
+    int cur_node=0, node_num=6;
+    while(cur_node<node_num){
+        for(int i=1; i<node_num; i++){
+            if(visit[i] or map[cur_node][i]==0)
+                continue;
+            int pre_d=dis[i];
+            dis[i] = min(dis[cur_node]+map[cur_node][i], dis[i]);
+            if(dis[i] != pre_d){
+                version[i]++;
+                queue.emplace(i, dis[i], version[i]);
+            }
+        }
+        while(true){
+            Triple tmp = queue.top();
+            queue.pop();
+            if(version[tmp.get(0)] == tmp.get(2)){
+                cur_node=tmp.get(0);
+                visit[cur_node] = true;
+                if(cur_node == node_num-1)
+                    return tmp.get(1);
+                break;
+            }
+        }
+    }
+    return -1;
+}
 
-//    priority_queue<Triple, vector<Triple>> test;
-//    test.emplace({1, 3, 1});
-//    test.emplace({1, 2, 1});
-//    test.emplace({1, 1, 1});
-//    while(!test.empty()){
-//        cout<<test.top()[1]<<endl;
-//        test.pop();
-//    }
-//
-//    return 0;
-//}
+int main(){
+    matrix map;
+    map.push_back(vector<int>({0, 5, 10, 0, 0, 0}));
+    map.push_back(vector<int>({5, 0, 4, 0, 30, 20}));
+    map.push_back(vector<int>({10, 4, 0, 5, 0, 0}));
+    map.push_back(vector<int>({0, 0, 5, 0, 0, 7}));
+    map.push_back(vector<int>({0, 30, 0, 0, 0, 1}));
+    map.push_back(vector<int>({0, 20, 0, 7, 1, 0}));
+
+    cout<<dijkstra(map)<<endl;
+    return 0;
+}
 
