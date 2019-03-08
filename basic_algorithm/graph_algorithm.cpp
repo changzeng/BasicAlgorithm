@@ -63,16 +63,16 @@ int dijkstra(matrix &map){
     return -1;
 }
 
-int main(){
-    matrix map;
-    map.push_back(vector<int>({0, 5, 10, 0, 0, 0}));
-    map.push_back(vector<int>({5, 0, 4, 0, 30, 20}));
-    map.push_back(vector<int>({10, 4, 0, 5, 0, 0}));
-    map.push_back(vector<int>({0, 0, 5, 0, 0, 7}));
-    map.push_back(vector<int>({0, 30, 0, 0, 0, 1}));
-    map.push_back(vector<int>({0, 20, 0, 7, 1, 0}));
-
-    cout<<dijkstra(map)<<endl;
-    return 0;
-}
+//int main(){
+//    matrix map;
+//    map.push_back(vector<int>({0, 5, 10, 0, 0, 0}));
+//    map.push_back(vector<int>({5, 0, 4, 0, 30, 20}));
+//    map.push_back(vector<int>({10, 4, 0, 5, 0, 0}));
+//    map.push_back(vector<int>({0, 0, 5, 0, 0, 7}));
+//    map.push_back(vector<int>({0, 30, 0, 0, 0, 1}));
+//    map.push_back(vector<int>({0, 20, 0, 7, 1, 0}));
+//
+//    cout<<dijkstra(map)<<endl;
+//    return 0;
+//}
 
