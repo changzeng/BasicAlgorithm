@@ -37,12 +37,12 @@ void distance_sort(vector<int> &array, int max_dist){
     }
 }
 
-int main(){
-    vector<int> array({2, 1, 5, 4, 9, 7});
-    distance_sort(array, 1);
-    for(auto val : array){
-        cout<<val<<endl;
-    }
-
-    return 0;
-}
+//int main(){
+//    vector<int> array({2, 1, 5, 4, 9, 7});
+//    distance_sort(array, 1);
+//    for(auto val : array){
+//        cout<<val<<endl;
+//    }
+//
+//    return 0;
+//}
