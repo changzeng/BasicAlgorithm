@@ -31,14 +31,14 @@ void calculate(vector<double> &a_1, vector<double> &a_2, int k){
     }
 }
 
-int main(){
-    int num, k; cin>>num>>k;
-    vector<double> a_1(num), a_2(num);
-    for(int i=0; i<num; i++)
-        cin>>a_2[i];
-    calculate(a_1, a_2, k);
-    for(auto val : a_1)
-        cout<<val<<endl;
-
-    return 0;
-}
+//int main(){
+//    int num, k; cin>>num>>k;
+//    vector<double> a_1(num), a_2(num);
+//    for(int i=0; i<num; i++)
+//        cin>>a_2[i];
+//    calculate(a_1, a_2, k);
+//    for(auto val : a_1)
+//        cout<<val<<endl;
+//
+//    return 0;
+//}
